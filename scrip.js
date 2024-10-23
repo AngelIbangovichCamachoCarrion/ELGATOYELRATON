@@ -7,6 +7,8 @@ let playerMoves = [];
 let computerMoves = [];
 const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
 const scoreList = document.getElementById('high-scores');
+const playAgainButton = document.getElementById('play-again-button');
+const resetScoresButton = document.getElementById('reset-scores-button'); // Botón de restablecer puntajes
 
 // Función para iniciar el juego
 function startGame() {
@@ -22,6 +24,7 @@ function startGame() {
         cell.textContent = '';
         cell.addEventListener('click', playerMove);
     });
+    playAgainButton.style.display = 'none'; // Asegúrate de ocultar el botón al iniciar
 }
 
 // Actualiza el cronómetro
@@ -84,6 +87,7 @@ function endGame(playerWon) {
     } else {
         document.getElementById('winner-message').textContent = 'La computadora ganó';
     }
+    playAgainButton.style.display = 'block'; // Mostrar el botón de "Jugar de nuevo"
 }
 
 // Guarda el puntaje en LocalStorage
@@ -103,6 +107,29 @@ function displayHighScores() {
         scoreList.appendChild(listItem);
     });
 }
+
+// Reiniciar el juego
+function resetGame() {
+    board.forEach(cell => {
+        cell.textContent = '';
+        cell.style.pointerEvents = 'auto'; // Habilitar clics nuevamente
+    });
+    document.getElementById('winner-message').textContent = '';
+    playAgainButton.style.display = 'none'; // Ocultar el botón
+    gameActive = true; // Reactivar el juego
+    startGame(); // Reinicia el juego
+}
+
+// Evento para el botón "Jugar de nuevo"
+playAgainButton.addEventListener('click', resetGame);
+
+// Evento para el botón "Restablecer Puntajes"
+resetScoresButton.addEventListener('click', () => {
+    localStorage.removeItem('highScores'); // Limpiar los puntajes del LocalStorage
+    while (scoreList.firstChild) {
+        scoreList.removeChild(scoreList.firstChild); // Limpiar la lista de puntajes
+    }
+});
 
 // Inicia el juego
 startGame();
