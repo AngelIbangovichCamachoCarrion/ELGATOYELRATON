@@ -109,15 +109,19 @@ function resetGame() {
     document.getElementById('winner-message').textContent = '';
     playAgainButton.style.display = 'none'; 
     gameOver = false; 
+    startGame(); 
+}
+
+function resetScores() {
     localStorage.removeItem('highScores'); 
     while (scoreList.firstChild) {
         scoreList.removeChild(scoreList.firstChild); 
     }
-    startGame(); 
+    highScores.length = 0; // Limpiar la lista de puntajes altos en memoria
 }
 
 playAgainButton.addEventListener('click', resetGame);
-resetScoresButton.addEventListener('click', resetGame);
+resetScoresButton.addEventListener('click', resetScores);
 
 startGame();
 displayHighScores();
