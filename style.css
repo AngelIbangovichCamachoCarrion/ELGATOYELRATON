@@ -9,41 +9,40 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh; 
-    overflow-y: auto; /* Permitir desplazamiento vertical */
+    overflow-y: auto; 
 }
 
 #game-container {
-    margin: 10px 0; /* Menor margen */
+    margin: 10px 0; 
     padding: 10px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    max-width: 400px; /* Ancho más pequeño */
+    max-width: 400px; 
     width: 100%;
-    max-height: 500px; /* Altura máxima para permitir desplazamiento */
-    overflow-y: auto; /* Habilitar desplazamiento vertical */
+    max-height: 500px; 
+    overflow-y: auto; 
 }
 
 #high-scores {
     list-style-type: none;
     padding: 0;
-    width: 200px; /* Ancho más reducido */
+    width: 200px; 
     text-align: left;
     margin-top: 10px;
-    max-height: 200px; /* Altura máxima para la lista de puntajes */
-    overflow-y: auto; /* Habilitar desplazamiento vertical en la lista */
+    max-height: 200px; 
+    overflow-y: auto; 
 }
 
-
 h1 {
-    font-size: 1.2rem; /* Título aún más pequeño */
+    font-size: 1.2rem; 
     color: #fff;
     background-color: #4a90e2;
-    padding: 5px 10px; /* Espaciado más reducido */
-    border-radius: 5px; /* Bordes redondeados más pequeños */
+    padding: 5px 10px; 
+    border-radius: 5px; 
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
-    margin-bottom: 10px; /* Menor margen debajo del título */
+    margin-bottom: 10px; 
     text-align: center;
 }
 
@@ -53,11 +52,11 @@ h1 {
 }
 
 #tic-tac-toe-board td {
-    width: 50px; /* Celdas más pequeñas */
+    width: 50px; 
     height: 50px;
     border: 2px solid #4a90e2;
     text-align: center;
-    font-size: 1.2rem; /* Tamaño de fuente reducido */
+    font-size: 1.2rem; 
     font-weight: bold;
     color: #333;
     cursor: pointer;
@@ -73,7 +72,7 @@ h1 {
 }
 
 #timer {
-    font-size: 1rem; /* Texto del temporizador más pequeño */
+    font-size: 1rem; 
     margin-bottom: 10px;
     color: #333;
     font-weight: bold;
@@ -81,13 +80,12 @@ h1 {
 }
 
 #winner-message {
-    font-size: 1rem; /* Texto del mensaje reducido */
+    font-size: 1rem; 
     color: #28a745;
     margin-top: 10px;
     font-weight: bold;
     text-align: center;
 }
-
 
 #high-scores li {
     background-color: #f7f7f7;
@@ -120,4 +118,3 @@ h1 {
 #play-again-button:hover {
     background-color: #357ab7;
 }
-

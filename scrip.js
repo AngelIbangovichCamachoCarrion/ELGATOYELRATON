@@ -8,9 +8,9 @@ let computerMoves = [];
 const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
 const scoreList = document.getElementById('high-scores');
 const playAgainButton = document.getElementById('play-again-button');
-const resetScoresButton = document.getElementById('reset-scores-button'); // Botón de restablecer puntajes
+const resetScoresButton = document.getElementById('reset-scores-button'); 
 
-// Función para iniciar el juego
+
 function startGame() {
     playerTurn = true;
     gameOver = false;
@@ -24,16 +24,15 @@ function startGame() {
         cell.textContent = '';
         cell.addEventListener('click', playerMove);
     });
-    playAgainButton.style.display = 'none'; // Asegúrate de ocultar el botón al iniciar
+    playAgainButton.style.display = 'none'; 
 }
 
-// Actualiza el cronómetro
+
 function updateTimer() {
     const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
     document.getElementById('timer').textContent = `Tiempo: ${elapsedTime}s`;
 }
 
-// Movimiento del jugador
 function playerMove(event) {
     if (!playerTurn || gameOver || event.target.textContent) return;
     event.target.textContent = 'X';
@@ -46,7 +45,7 @@ function playerMove(event) {
     computerMove();
 }
 
-// Movimiento de la computadora (aleatorio)
+
 function computerMove() {
     let availableCells = Array.from(board).filter(cell => !cell.textContent);
     if (availableCells.length === 0) {
@@ -63,7 +62,7 @@ function computerMove() {
     }
 }
 
-// Verifica si hay un ganador
+
 function checkWin(moves) {
     const winningCombinations = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8],
@@ -73,7 +72,7 @@ function checkWin(moves) {
     return winningCombinations.some(combination => combination.every(index => moves.includes(index)));
 }
 
-// Finaliza el juego
+
 function endGame(playerWon) {
     clearInterval(timerInterval);
     gameOver = true;
@@ -87,10 +86,10 @@ function endGame(playerWon) {
     } else {
         document.getElementById('winner-message').textContent = 'La computadora ganó';
     }
-    playAgainButton.style.display = 'block'; // Mostrar el botón de "Jugar de nuevo"
+    playAgainButton.style.display = 'block'; 
 }
 
-// Guarda el puntaje en LocalStorage
+
 function saveHighScore(name, time) {
     highScores.push({ name, time, date: new Date().toLocaleString() });
     highScores.sort((a, b) => a.time - b.time);
@@ -98,7 +97,7 @@ function saveHighScore(name, time) {
     localStorage.setItem('highScores', JSON.stringify(highScores));
 }
 
-// Muestra los mejores tiempos
+
 function displayHighScores() {
     scoreList.innerHTML = '';
     highScores.forEach(score => {
@@ -108,29 +107,29 @@ function displayHighScores() {
     });
 }
 
-// Reiniciar el juego
+
 function resetGame() {
     board.forEach(cell => {
         cell.textContent = '';
-        cell.style.pointerEvents = 'auto'; // Habilitar clics nuevamente
+        cell.style.pointerEvents = 'auto'; 
     });
     document.getElementById('winner-message').textContent = '';
-    playAgainButton.style.display = 'none'; // Ocultar el botón
-    gameActive = true; // Reactivar el juego
-    startGame(); // Reinicia el juego
+    playAgainButton.style.display = 'none'; 
+    gameActive = true; 
+    startGame(); 
 }
 
-// Evento para el botón "Jugar de nuevo"
+
 playAgainButton.addEventListener('click', resetGame);
 
-// Evento para el botón "Restablecer Puntajes"
+
 resetScoresButton.addEventListener('click', () => {
-    localStorage.removeItem('highScores'); // Limpiar los puntajes del LocalStorage
+    localStorage.removeItem('highScores'); 
     while (scoreList.firstChild) {
-        scoreList.removeChild(scoreList.firstChild); // Limpiar la lista de puntajes
+        scoreList.removeChild(scoreList.firstChild); 
     }
 });
 
-// Inicia el juego
+
 startGame();
 displayHighScores();
