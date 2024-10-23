@@ -10,6 +10,7 @@ const scoreList = document.getElementById('high-scores');
 const playAgainButton = document.getElementById('play-again-button');
 const resetScoresButton = document.getElementById('reset-scores-button'); 
 
+displayHighScores();
 
 function startGame() {
     playerTurn = true;
