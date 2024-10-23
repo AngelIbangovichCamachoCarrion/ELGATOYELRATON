@@ -1,4 +1,3 @@
-// Variables
 const board = document.querySelectorAll("#tic-tac-toe-board td");
 let playerTurn = true;
 let gameOver = false;
@@ -28,7 +27,6 @@ function startGame() {
     playAgainButton.style.display = 'none'; 
 }
 
-
 function updateTimer() {
     const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
     document.getElementById('timer').textContent = `Tiempo: ${elapsedTime}s`;
@@ -46,7 +44,6 @@ function playerMove(event) {
     computerMove();
 }
 
-
 function computerMove() {
     let availableCells = Array.from(board).filter(cell => !cell.textContent);
     if (availableCells.length === 0) {
@@ -63,7 +60,6 @@ function computerMove() {
     }
 }
 
-
 function checkWin(moves) {
     const winningCombinations = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8],
@@ -72,7 +68,6 @@ function checkWin(moves) {
     ];
     return winningCombinations.some(combination => combination.every(index => moves.includes(index)));
 }
-
 
 function endGame(playerWon) {
     clearInterval(timerInterval);
@@ -90,14 +85,12 @@ function endGame(playerWon) {
     playAgainButton.style.display = 'block'; 
 }
 
-
 function saveHighScore(name, time) {
     highScores.push({ name, time, date: new Date().toLocaleString() });
     highScores.sort((a, b) => a.time - b.time);
     if (highScores.length > 10) highScores.pop();
     localStorage.setItem('highScores', JSON.stringify(highScores));
 }
-
 
 function displayHighScores() {
     scoreList.innerHTML = '';
@@ -108,7 +101,6 @@ function displayHighScores() {
     });
 }
 
-
 function resetGame() {
     board.forEach(cell => {
         cell.textContent = '';
@@ -116,21 +108,16 @@ function resetGame() {
     });
     document.getElementById('winner-message').textContent = '';
     playAgainButton.style.display = 'none'; 
-    gameActive = true; 
-    startGame(); 
-}
-
-
-playAgainButton.addEventListener('click', resetGame);
-
-
-resetScoresButton.addEventListener('click', () => {
+    gameOver = false; 
     localStorage.removeItem('highScores'); 
     while (scoreList.firstChild) {
         scoreList.removeChild(scoreList.firstChild); 
     }
-});
+    startGame(); 
+}
 
+playAgainButton.addEventListener('click', resetGame);
+resetScoresButton.addEventListener('click', resetGame);
 
 startGame();
 displayHighScores();

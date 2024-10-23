@@ -3,39 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic-Tac-Toe - Jugador vs Computadora</title>
     <link rel="icon" href="descarga.jpeg" type="image/x-icon"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <title>Tres en Raya</title>
+    <style>
+        #tic-tac-toe-board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 5px;
+        }
+        #tic-tac-toe-board td {
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            font-size: 24px;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+        #buttons {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Juego de Tic-Tac-Toe ELMARIANITAx</h1>
-    <div id="game-container">
-        <div id="timer">Tiempo: 0s</div>
-        <table id="tic-tac-toe-board">
-            <tr>
-                <td data-index="0"></td>
-                <td data-index="1"></td>
-                <td data-index="2"></td>
-            </tr>
-            <tr>
-                <td data-index="3"></td>
-                <td data-index="4"></td>
-                <td data-index="5"></td>
-            </tr>
-            <tr>
-                <td data-index="6"></td>
-                <td data-index="7"></td>
-                <td data-index="8"></td>
-            </tr>
-        </table>
-        <div id="winner-message"></div>
-      
-        <button id="play-again-button" style="display: none;">Jugar de nuevo</button>
+
+    <h1>Tres en Raya</h1>
+    <table id="tic-tac-toe-board">
+        <tr>
+            <td data-index="0"></td>
+            <td data-index="1"></td>
+            <td data-index="2"></td>
+        </tr>
+        <tr>
+            <td data-index="3"></td>
+            <td data-index="4"></td>
+            <td data-index="5"></td>
+        </tr>
+        <tr>
+            <td data-index="6"></td>
+            <td data-index="7"></td>
+            <td data-index="8"></td>
+        </tr>
+    </table>
+
+    <div id="timer">Tiempo: 0s</div>
+    <div id="winner-message"></div>
+
+    <div id="buttons">
+        <button id="play-again-button" style="display:none;">Jugar de Nuevo</button>
+        <button id="reset-scores-button">Restablecer Puntajes</button>
     </div>
-    <h2>Mejores tiempos</h2>
+
+    <h2>Puntajes Altos</h2>
     <ul id="high-scores"></ul>
-    <button id="reset-scores-button">Restablecer Puntajes</button> 
-    <script src="scrip.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
